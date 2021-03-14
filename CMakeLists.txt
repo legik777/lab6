@@ -32,6 +32,9 @@ find_package(GTest CONFIG REQUIRED)
 hunter_add_package(Boost COMPONENTS system filesystem)
 find_package(Boost 1.72.0 CONFIG REQUIRED system filesystem)
 
+hunter_add_package(nlohmann_json)
+find_package(nlohmann_json 3.1.4 CONFIG REQUIRED)
+
 add_library(${PROJECT_NAME} STATIC
   # enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
