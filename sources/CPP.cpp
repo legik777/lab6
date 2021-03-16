@@ -19,7 +19,6 @@ nlohmann::json document;
 void OnExitEvent(int s) {
     working = false;
 }
-
 std::string FormatJSON(nlohmann::json doc) {
     std::string out = "[\n";
     for (int i = 0; i < doc.size(); i++) {
