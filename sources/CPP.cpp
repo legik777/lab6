@@ -11,7 +11,7 @@
 #include <signal.h>
 #include <memory>
 #include "boost/log/trivial.hpp"
-#include "single_include/nlohmann/json.hpp"
+#include "nlohmann/json.hpp"
 
 bool working;
 nlohmann::json document;
