@@ -49,9 +49,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   "$<INSTALL_INTERFACE:include>"
 )
 
-target_link_libraries(cpp Boost::log)
-
 target_link_libraries(demo ${PROJECT_NAME})
+
+target_link_libraries(project Boost::log)
 
 if(BUILD_TESTS)
   add_executable(tests
