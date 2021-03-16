@@ -27,10 +27,8 @@ std::string FormatJSON(nlohmann::json doc) {
 
         std::string hash = static_cast<std::string>(doc[i]["hash"]);
         out += "        \"hash\" = \"" + hash + "\",\n";
- 
         std::string data = static_cast<std::string>(doc[i]["data"]);
         out += "        \"data\" = \"" + data + "\"\n    },\n";
-
     }
     out += "]";
     return out;
