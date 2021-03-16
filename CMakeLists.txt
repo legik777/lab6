@@ -29,8 +29,8 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
-hunter_add_package(Boost COMPONENTS system filesystem)
-find_package(Boost 1.72.0 CONFIG REQUIRED system filesystem)
+hunter_add_package(Boost COMPONENTS log)
+find_package(Boost 1.72.0 CONFIG REQUIRED log)
 
 hunter_add_package(nlohmann_json)
 find_package(nlohmann_json 3.1.4 CONFIG REQUIRED)
@@ -49,7 +49,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   "$<INSTALL_INTERFACE:include>"
 )
 
-target_link_libraries(cpp Boost)
+target_link_libraries(cpp Boost::log)
 
 target_link_libraries(demo ${PROJECT_NAME})
 
