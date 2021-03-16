@@ -1,4 +1,6 @@
-﻿#include <thread>
+// Copyright 2020 Andrey
+
+#include <thread>
 #include <iostream>
 #include <mutex>
 #include <string>
