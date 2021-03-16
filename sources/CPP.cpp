@@ -10,7 +10,7 @@
 #include <vector>
 #include <signal.h>
 #include <memory>
-#include <Boost/log/trivial.hpp>
+#include <boost/log/trivial.hpp>
 #include "nlohmann/json.hpp"
 
 bool working;
