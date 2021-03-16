@@ -37,7 +37,7 @@ find_package(nlohmann_json 3.1.4 CONFIG REQUIRED)
 
 add_library(${PROJECT_NAME} STATIC
   # enum your files and delete this comment
-  ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/sources/CPP.cpp
 )
 
 add_executable(demo
