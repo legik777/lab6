@@ -22,7 +22,7 @@ void OnExitEvent(int s) {
 std::string FormatJSON(nlohmann::json doc) {
     std::string out = "[\n";
     for (int i = 0; i < doc.size(); i++) {
-        unsigned long int  ts = static_cast<unsigned long int>(doc[i]["timestamp"]);
+        unsigned long int ts = static_cast<unsigned long int>(doc[i]["timestamp"]);
         out += "    {\n        \"timestamp\" = " + std::to_string(ts) + ",\n";
 
         std::string hash = static_cast<std::string>(doc[i]["hash"]);
