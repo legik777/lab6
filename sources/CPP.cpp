@@ -5,7 +5,7 @@
 #include <mutex>
 #include <string>
 #include <time.h>
-#include <picosha2.hpp>
+#include <picosha2.h>
 #include <chrono>
 #include <vector>
 #include <signal.h>
