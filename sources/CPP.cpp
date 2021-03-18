@@ -22,7 +22,7 @@ void OnExitEvent() {
 std::string FormatJSON(nlohmann::json doc) {
     std::string out = "[\n";
     for (int i = 0; i < doc.size(); i++) {
-    unsigned int64 ts = static_cast<unsigned int64>(doc[i]["timestamp"]);
+    uint64_t ts = static_cast<unsigned int64>(doc[i]["timestamp"]);
         out += "    {\n        \"timestamp\" = " + std::to_string(ts) + ",\n";
 
         std::string hash = static_cast<std::string>(doc[i]["hash"]);
@@ -34,14 +34,14 @@ std::string FormatJSON(nlohmann::json doc) {
     return out;
 }
 
-void OutputJSON(unsigned int64 timestamp, std::string hash, std::string data){
+void OutputJSON(uint64_t timestamp, std::string hash, std::string data){
     nlohmann::json temp;
     temp["hash"] = hash;
     temp["timestamp"] = timestamp;
     temp["data"] = data;
     document.push_back(temp);
     }
-void TF(std::shared_ptr<std::mutex> mutex, int i, unsigned int64 startingPoint){
+void TF(std::shared_ptr<std::mutex> mutex, int i, uint64_t startingPoint){
     const std::string hashEnd = "0000";
     srand(i + 99999 + time(NULL));
     while (working)
