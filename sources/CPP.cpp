@@ -95,11 +95,11 @@ int main(int argc, char* argv[])
     std::cout << "threads:" << maxThreads << std::endl;
     std::thread** threads = new std::thread * [maxThreads];
 
-    for (int i = 0; i < maxThreads; i++) {
+    for (unsigned int i = 0; i < maxThreads; i++) {
         threads[i] =
             new std::thread(TF, mutex, i, start.time_since_epoch().count());
     }
-    for (int i = 0; i < maxThreads; i++) {
+    for (unsigned int i = 0; i < maxThreads; i++) {
         threads[i]->join();
     }
     std::ofstream jsonFile;
