@@ -41,7 +41,7 @@ void OutputJSON(unsigned int64 timestamp, std::string hash, std::string data){
     temp["data"] = data;
     document.push_back(temp);
     }
-void ThreadFunction(std::shared_ptr<std::mutex> mutex, int i, unsigned int64 startingPoint){
+void TF(std::shared_ptr<std::mutex> mutex, int i, unsigned int64 startingPoint){
     const std::string hashEnd = "0000";
     srand(i + 99999 + time(NULL));
     while (working)
@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
     std::thread** threads = new std::thread * [maxThreads];
 
     for (int i = 0; i < maxThreads; i++) {
-        threads[i] = new std::thread(ThreadFunction, mutex, i, start.time_since_epoch().count());
+        threads[i] = new std::thread(TF, mutex, i, start.time_since_epoch().count());
     }
     for (int i = 0; i < maxThreads; i++) {
         threads[i]->join();
