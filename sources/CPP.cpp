@@ -59,8 +59,7 @@ void TF(std::shared_ptr<std::mutex> mutex, int i, unsigned int64 startingPoint){
       BOOST_LOG_TRIVIAL(info) << i << " " << timespan << " " << randomstr << ": " << hexString << std::endl;
       OutputJSON(timespan, hexString, randomstr);
       mutex->unlock();
-        }
-        else{
+        }else{
 mutex->lock();
 std::chrono::time_point now = std::chrono::high_resolution_clock::now();
 unsigned int timespan = now.time_since_epoch().count() - startingPoint;
