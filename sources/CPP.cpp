@@ -83,8 +83,7 @@ int main(int argc, char* argv[])
         jsonName = argv[1];
         maxThreads = std::thread::hardware_concurrency();
         std::cout << "threads:" << maxThreads << std::endl;
-    }
-    else if (argc >= 3){
+    }else if (argc >= 3){
         jsonName = argv[1];
         maxThreads = std::stoi(argv[2]);
     }else{
