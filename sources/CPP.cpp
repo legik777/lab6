@@ -34,16 +34,14 @@ std::string FormatJSON(nlohmann::json doc) {
     return out;
 }
 
-void OutputJSON(unsigned long int timestamp, std::string hash, std::string data) { 
+void OutputJSON(unsigned long int timestamp, std::string hash, std::string data) {
     nlohmann::json temp;
- 
     temp["hash"] = hash;
     temp["timestamp"] = timestamp;
     temp["data"] = data;
     
     document.push_back(temp);
-    
-}
+    }
 void ThreadFunction(std::shared_ptr<std::mutex> mutex, int i, unsigned long int startingPoint) {
     const std::string hashEnd = "0000";
     srand(i + 99999 + time(NULL));
