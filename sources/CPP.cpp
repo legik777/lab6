@@ -21,7 +21,7 @@ void OnExitEvent() {
 }
 std::string FormatJSON(nlohmann::json doc) {
     std::string out = "[\n";
-    for ( uint64_t i = 0; i < doc.size(); i++) {
+    for (uint64_t i = 0; i < doc.size(); i++) {
     uint64_t ts = static_cast<uint64_t>(doc[i]["timestamp"]);
         out += "    {\n        \"timestamp\" = " + std::to_string(ts) + ",\n";
 
