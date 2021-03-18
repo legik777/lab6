@@ -50,7 +50,7 @@ void TF(std::shared_ptr<std::mutex> mutex, int i, uint64_t startingPoint){
         std::string randomstr = std::to_string(std::rand());
         mutex->unlock();
         std::string hexString = picosha2::hash256_hex_string(randomstr);
-        int strlen = hexString.length();
+        //int strlen = hexString.length();
 
       if (hexString.substr(hexString.length() - hashEnd.length()) == hashEnd){
       mutex->lock();
