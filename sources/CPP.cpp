@@ -38,8 +38,7 @@ void OutputJSON(unsigned int timestamp, std::string hash, std::string data){
     nlohmann::json temp;
     temp["hash"] = hash;
     temp["timestamp"] = timestamp;
-    temp["data"] = data;
-    
+    temp["data"] = data;  
     document.push_back(temp);
     }
 void ThreadFunction(std::shared_ptr<std::mutex> mutex, int i, unsigned long int startingPoint){
