@@ -51,7 +51,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 target_link_libraries(demo ${PROJECT_NAME})
 
-target_link_libraries(project Boost::log)
+target_link_libraries(${PROJECT_NAME} Boost::log)
 
 if(BUILD_TESTS)
   add_executable(tests
