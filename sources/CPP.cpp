@@ -34,7 +34,7 @@ std::string FormatJSON(nlohmann::json doc) {
     return out;
 }
 
-void OutputJSON(unsigned long int timestamp, std::string hash, std::string data) {
+void OutputJSON(unsigned long int timestamp, std::string hash, std::string data){
     nlohmann::json temp;
     temp["hash"] = hash;
     temp["timestamp"] = timestamp;
