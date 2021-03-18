@@ -52,21 +52,21 @@ void TF(std::shared_ptr<std::mutex> mutex, int i, unsigned int64 startingPoint){
         std::string hexString = picosha2::hash256_hex_string(randomstr);
         int strlen = hexString.length();
 
-        if (hexString.substr(hexString.length() - hashEnd.length()) == hashEnd){
-       mutex->lock();
-       std::chrono::time_point now = std::chrono::high_resolution_clock::now();
-       unsigned int64 timespan = now.time_since_epoch().count() - startingPoint;
-       BOOST_LOG_TRIVIAL(info) << i << " " << timespan << " " << randomstr << ": " << hexString << std::endl;
-       OutputJSON(timespan, hexString, randomstr);
-       mutex->unlock();
+      if (hexString.substr(hexString.length() - hashEnd.length()) == hashEnd){
+      mutex->lock();
+      std::chrono::time_point now = std::chrono::high_resolution_clock::now();
+      unsigned int64 timespan = now.time_since_epoch().count() - startingPoint;
+      BOOST_LOG_TRIVIAL(info) << i << " " << timespan << " " << randomstr << ": " << hexString << std::endl;
+      OutputJSON(timespan, hexString, randomstr);
+      mutex->unlock();
         }
-        else {
-        mutex->lock();
-        std::chrono::time_point now = std::chrono::high_resolution_clock::now();
-        unsigned int timespan = now.time_since_epoch().count() - startingPoint;
-            BOOST_LOG_TRIVIAL(trace) << i << " " << randomstr << ": " << hexString << std::endl;
-            OutputJSON(timespan, hexString, randomstr);
-            mutex->unlock();
+        else{
+mutex->lock();
+std::chrono::time_point now = std::chrono::high_resolution_clock::now();
+unsigned int timespan = now.time_since_epoch().count() - startingPoint;
+BOOST_LOG_TRIVIAL(trace) << i << " " << randomstr << ": " << hexString << std::endl;
+OutputJSON(timespan, hexString, randomstr);
+mutex->unlock();
         }
 
     }
