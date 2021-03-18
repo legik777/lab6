@@ -22,7 +22,7 @@ void OnExitEvent(int s) {
 std::string FormatJSON(nlohmann::json doc) {
     std::string out = "[\n";
     for (int i = 0; i < doc.size(); i++) {
-    unsigned long int ts = static_cast<unsigned long int>(doc[i]["timestamp"]);
+    unsigned Int64 ts = static_cast<unsigned long int>(doc[i]["timestamp"]);
         out += "    {\n        \"timestamp\" = " + std::to_string(ts) + ",\n";
 
         std::string hash = static_cast<std::string>(doc[i]["hash"]);
@@ -34,14 +34,14 @@ std::string FormatJSON(nlohmann::json doc) {
     return out;
 }
 
-void OutputJSON(unsigned int timestamp, std::string hash, std::string data){
+void OutputJSON(unsigned Int64 timestamp, std::string hash, std::string data){
     nlohmann::json temp;
     temp["hash"] = hash;
     temp["timestamp"] = timestamp;
-    temp["data"] = data;  
+    temp["data"] = data;
     document.push_back(temp);
     }
-void ThreadFunction(std::shared_ptr<std::mutex> mutex,int i,unsigned long int startingPoint){
+void ThreadFunction(std::shared_ptr<std::mutex> mutex, int i, unsigned long int startingPoint){
     const std::string hashEnd = "0000";
     srand(i + 99999 + time(NULL));
     while (working)
@@ -61,9 +61,9 @@ void ThreadFunction(std::shared_ptr<std::mutex> mutex,int i,unsigned long int st
             mutex->unlock();
         }
         else {
-            mutex->lock();
-            std::chrono::time_point now = std::chrono::high_resolution_clock::now();
-            unsigned int timespan = now.time_since_epoch().count() - startingPoint;
+        mutex->lock();
+        std::chrono::time_point now = std::chrono::high_resolution_clock::now();
+        unsigned int timespan = now.time_since_epoch().count() - startingPoint;
             BOOST_LOG_TRIVIAL(trace) << i << " " << randomstr << ": " << hexString << std::endl;
             OutputJSON(timespan, hexString, randomstr);
             mutex->unlock();
