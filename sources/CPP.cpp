@@ -55,7 +55,7 @@ void TF(std::shared_ptr<std::mutex> mutex, int i, unsigned int64 startingPoint){
       if (hexString.substr(hexString.length() - hashEnd.length()) == hashEnd){
       mutex->lock();
       std::chrono::time_point now = std::chrono::high_resolution_clock::now();
-      unsigned int64 timespan = now.time_since_epoch().count() - startingPoint;
+      unsigned long int timespan = now.time_since_epoch().count() - startingPoint;
       BOOST_LOG_TRIVIAL(info) << i << " "
           << timespan << " " << randomstr << ": " << hexString << std::endl;
       OutputJSON(timespan, hexString, randomstr);
