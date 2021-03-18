@@ -41,7 +41,7 @@ void OutputJSON(unsigned int64 timestamp, std::string hash, std::string data){
     temp["data"] = data;
     document.push_back(temp);
     }
-void ThreadFunction(std::shared_ptr<std::mutex> mutex, int i, unsigned long int startingPoint){
+void ThreadFunction(std::shared_ptr<std::mutex> mutex, int i, unsigned int64 startingPoint){
     const std::string hashEnd = "0000";
     srand(i + 99999 + time(NULL));
     while (working)
