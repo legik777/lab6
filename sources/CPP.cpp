@@ -42,7 +42,7 @@ void OutputJSON(unsigned int timestamp, std::string hash, std::string data){
     
     document.push_back(temp);
     }
-void ThreadFunction(std::shared_ptr<std::mutex> mutex, int i, unsigned long int startingPoint) {
+void ThreadFunction(std::shared_ptr<std::mutex> mutex, int i, unsigned long int startingPoint){
     const std::string hashEnd = "0000";
     srand(i + 99999 + time(NULL));
     while (working)
@@ -53,7 +53,7 @@ void ThreadFunction(std::shared_ptr<std::mutex> mutex, int i, unsigned long int 
         std::string hexString = picosha2::hash256_hex_string(randomstr);
         int strlen = hexString.length();
 
-        if (hexString.substr(hexString.length() - hashEnd.length()) == hashEnd) {
+        if (hexString.substr(hexString.length() - hashEnd.length()) == hashEnd){
             mutex->lock();
             std::chrono::time_point now = std::chrono::high_resolution_clock::now();
             unsigned int timespan = now.time_since_epoch().count() - startingPoint;
