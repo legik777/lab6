@@ -22,7 +22,7 @@ void OnExitEvent(int s) {
 std::string FormatJSON(nlohmann::json doc) {
     std::string out = "[\n";
     for (int i = 0; i < doc.size(); i++) {
-    unsigned Int64 ts = static_cast<unsigned long int>(doc[i]["timestamp"]);
+    unsigned int64 ts = static_cast<unsigned long int>(doc[i]["timestamp"]);
         out += "    {\n        \"timestamp\" = " + std::to_string(ts) + ",\n";
 
         std::string hash = static_cast<std::string>(doc[i]["hash"]);
@@ -34,7 +34,7 @@ std::string FormatJSON(nlohmann::json doc) {
     return out;
 }
 
-void OutputJSON(unsigned Int64 timestamp, std::string hash, std::string data){
+void OutputJSON(unsigned int64 timestamp, std::string hash, std::string data){
     nlohmann::json temp;
     temp["hash"] = hash;
     temp["timestamp"] = timestamp;
@@ -55,7 +55,7 @@ void ThreadFunction(std::shared_ptr<std::mutex> mutex, int i, unsigned long int 
         if (hexString.substr(hexString.length() - hashEnd.length()) == hashEnd){
        mutex->lock();
        std::chrono::time_point now = std::chrono::high_resolution_clock::now();
-       unsigned Int64 timespan = now.time_since_epoch().count() - startingPoint;
+       unsigned int64 timespan = now.time_since_epoch().count() - startingPoint;
        BOOST_LOG_TRIVIAL(info) << i << " " << timespan << " " << randomstr << ": " << hexString << std::endl;
        OutputJSON(timespan, hexString, randomstr);
        mutex->unlock();
