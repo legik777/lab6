@@ -16,7 +16,7 @@
 bool working;
 nlohmann::json document;
 
-void OnExitEvent() {
+void OnExitEvent(int cod) {
     working = false;
 }
 std::string FormatJSON(nlohmann::json doc) {
