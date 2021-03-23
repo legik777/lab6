@@ -17,7 +17,7 @@ bool working;
 nlohmann::json document;
 
 void OnExitEvent(int cod) {
-    if(cod) {
+    if (cod) {
     working = false;
     }
 }
